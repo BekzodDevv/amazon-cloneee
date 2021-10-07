@@ -39,7 +39,7 @@ function Header() {
                         <p>Hello</p>
                         <p className="font-extrabold 
                         md:text-sm">
-                            Axxount & Lists
+                            Axxxount & Lists
                         </p>
                     </div>
 
