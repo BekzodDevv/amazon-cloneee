@@ -22,7 +22,7 @@ function Product({ id, title, price, description, category, image }) {
 
     const addItemToBasket = () => {
         const product = {
-            id, title, price, rating, description, image, category, hasPrime
+            id, title, price, description, category, image 
         }
         dispatch(addToBasket(product))
     }
