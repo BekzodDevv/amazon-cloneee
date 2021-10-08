@@ -37,8 +37,9 @@ function Checkout() {
                         </h1>
                         {items.map((item, i) => (
                             <CheckoutProduct
-                                id={i}
-                                title={item.id}
+                                key={i}
+                                id={item.id}
+                                title={item.title}
                                 price={item.price}
                                 rating={item.rating}
                                 description={item.description}
