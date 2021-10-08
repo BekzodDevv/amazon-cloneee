@@ -5,7 +5,16 @@ import { useDispatch } from "react-redux";
 import { addToBasket, removeFromBasket } from "../slices/basketSlice"
 
 
-function CheckoutProduct({ id, title, price, rating, description, image, category, hasPrime }) {
+function CheckoutProduct({
+    id,
+    title,
+    price,
+    rating,
+    description,
+    image,
+    category,
+    hasPrime,
+}) {
     const dispatch = useDispatch()
 
 
@@ -30,11 +39,13 @@ function CheckoutProduct({ id, title, price, rating, description, image, categor
             {/* Middle */}
 
             <div className="col-span-3 mx-5">
-                <p className="">
+                <p>
                     {title}
                 </p>
                 <div className="flex">
-                    {Array(rating).fill().map((_, i) => (
+                    {Array(rating)
+                    .fill()
+                    .map((_, i) => (
                         <StarIcon key={i} className="h-5 text-yellow-500" />
                     ))}
                 </div>
