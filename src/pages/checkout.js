@@ -29,11 +29,11 @@ function Checkout() {
                     />
 
                     <div className="flex flex-col p-5 space-y-10 bg-white">
-                        {/* <h1 className="text-3xl border-b pb-4">
+                        <h1 className="text-3xl border-b pb-4">
                             {items.length === 0
                                 ? "Your Amazin Basket is empty."
                                 : "Shopping Basket"}
-                        </h1> */}
+                        </h1>
 
                         {items.map((item, i) => {
                             <CheckoutProduct
@@ -54,7 +54,7 @@ function Checkout() {
 
                 {/* Right */}
 
-                {/* <div className="flex flex-col bg-white p-10 shadow-md">
+                <div className="flex flex-col bg-white p-10 shadow-md">
                     {items.length > 0 && (
                         <>
                             <h2 className="whitespace-nowrap">
@@ -71,7 +71,7 @@ function Checkout() {
                             </button>
                         </>
                     )}
-                </div> */}
+                </div>
 
 
 
