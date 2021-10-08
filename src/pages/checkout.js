@@ -1,12 +1,16 @@
 import Header from "../components/Header";
 import Image from "next/image";
-import { useSelector } from "react-redux";
-import { selectItems } from "../slices/basketSlice";
+import { useSelector } from 'react-redux'
+import { selectItems, selectTotal } from "../slices/basketSlice";
 import CheckoutProduct from "../components/CheckoutProduct";
+import Currnecy from "react-currency-formatter";
+import { useSession } from "next-auth/client";
 
 
 function Checkout() {
-    const items = useSelector(selectItems)
+    const items = useSelector(selectItems);
+    const total = useSelector(selectTotal)
+    const [session] = useSession();
 
 
     return (
@@ -31,22 +35,42 @@ function Checkout() {
                                 ? "Your Amazon Basket is empty"
                                 : "Shopping Basket"}
                         </h1>
-                    {items.map((item, i) => (
-                        <CheckoutProduct 
-                        id={i}
-                        title={item.id}
-                        price={item.price}
-                        rating={item.rating}
-                        description={item.description}
-                        category={item.category}
-                        image={item.image}
-                        hasPrime={item.hasPrime}
-                        />
-                    ))}
+                        {items.map((item, i) => (
+                            <CheckoutProduct
+                                id={i}
+                                title={item.id}
+                                price={item.price}
+                                rating={item.rating}
+                                description={item.description}
+                                category={item.category}
+                                image={item.image}
+                                hasPrime={item.hasPrime}
+                            />
+                        ))}
 
                     </div>
                 </div>
 
+
+                {/* Right */}
+                <div className="flex flex-col bg-white p-10 shadow-md">
+                    {items.length > 0 && (
+                        <>
+                            <h2 className="whitespace-nowrap">
+                                Subtotal ({items.length} items): {" "}
+                                <span className="font-bold">
+                                    <Currnecy quantity={total} currency="GBP" />
+                                </span>
+                            </h2>
+
+                            <button
+                                disabled={!session}
+                                className={`button mt-2 ${!session && "from-gray-300 to-gray-500 border-gray-200 text-gray-300 cursor-not-allowed"}`}>
+                                {!session ? "Sign in to chevkout" : "Procend to cheknow"}
+                            </button>
+                        </>
+                    )}
+                </div>
 
 
 
